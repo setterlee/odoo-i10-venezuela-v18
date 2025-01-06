@@ -59,7 +59,7 @@ Este es un proyecto de código abierto y agradecemos tus contribuciones. Para co
    - Contiene el código en producción.
    - Siempre estable y funcional.
 
-2. **`develop`**:
+2. **`development`**:
    - Rama principal para integrar desarrollos.
    - Contiene el código listo para pruebas y lanzamientos.
 
@@ -75,9 +75,9 @@ Este es un proyecto de código abierto y agradecemos tus contribuciones. Para co
 #### Flujo de Trabajo
 
 1. **Nueva funcionalidad**
-   - Crea una rama `feature/` basada en `develop`:
+   - Crea una rama `feature/` basada en `development`:
      ```bash
-     git checkout develop
+     git checkout development
      git pull
      git checkout -b feature/add-tax-module
      ```
@@ -89,14 +89,14 @@ Este es un proyecto de código abierto y agradecemos tus contribuciones. Para co
      git push origin feature/add-tax-module
      ```
 
-   - Abre un *pull request* (PR) desde la rama `feature/` hacia `develop`.
+   - Abre un *pull request* (PR) desde la rama `feature/` hacia `development`.
 
 2. **Preparar para producción**
-   - Cuando todo esté listo para producción, fusiona `develop` en `main`:
+   - Cuando todo esté listo para producción, fusiona `developmetn` en `main`:
      ```bash
      git checkout main
      git pull
-     git merge develop
+     git merge development
      git push origin main
      ```
 
@@ -108,7 +108,7 @@ Este es un proyecto de código abierto y agradecemos tus contribuciones. Para co
      git checkout -b hotfix/fix-rif-validation
      ```
 
-   - Corrige el error, realiza un PR hacia `main` y `develop`.
+   - Corrige el error, realiza un PR hacia `main` y `development`.
 
 #### Reglas básicas
 1. **Nombres claros para ramas**:
@@ -126,7 +126,7 @@ Este es un proyecto de código abierto y agradecemos tus contribuciones. Para co
 
 ## Licencia
 
-Este proyecto estará licenciado bajo la [MIT License](LICENSE).
+Este proyecto está licenciado bajo la [GPL v3](LICENSE).
 
 
 ## Desarrolladores Principales:

@@ -42,12 +42,12 @@
           </xpath>
           <xpath expr="//field[@name='bank_ids']" position="replace">
               <field name="bank_ids">
-                <tree editable="bottom">
+                <list editable="bottom">
                     <field name="bank_id"/>
                     <field name="acc_number"/>
                     <field name="l10n_ve_acc_type"/>
                     <field name="acc_holder_name" invisible="1"/>
-                </tree>
+                </list>
               </field>
           </xpath>
           <field name="vat" position="after">

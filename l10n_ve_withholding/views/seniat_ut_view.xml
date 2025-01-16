@@ -5,11 +5,11 @@
         <field name="name">seniat.ut.tree</field>
         <field name="model">seniat.ut</field>
         <field name="arch" type="xml">
-            <tree string="SENIAT Unidad Tributaria" editable="top">
+            <list string="SENIAT Unidad Tributaria" editable="top">
                 <field name="date"/>
                 <field name="amount"/>
                 <field name="ref"/>
-            </tree>
+            </list>
         </field>
     </record>
 

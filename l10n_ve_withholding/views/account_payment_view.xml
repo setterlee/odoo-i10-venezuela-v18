@@ -6,11 +6,11 @@
         <field name="model">account.payment</field>
         <field name="inherit_id" ref="account.view_account_payment_tree"/>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="payment_method_code" invisible="1"/>
                 <field name="partner_type" invisible="1"/>
                 <!--<button name="%(action_report_withholding_certificate)d" icon="fa-print " string="Print withholding voucher" type="action" attrs="{'invisible': ['|', ('payment_method_code', '!=', 'withholding'), ('partner_type', '!=', 'supplier')]}"/>-->
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -20,7 +20,7 @@
         <field name="model">account.payment</field>
         <field name="inherit_id" ref="account_payment_group.view_account_payment_from_group_tree"/>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="payment_method_code" invisible="1"/>
                 <button
                     name="%(action_report_withholding_certificate)d"
@@ -40,7 +40,7 @@
                         ('payment_method_code', '!=', 'withholding'), ('partner_type', '!=', 'supplier'),
                         ('payment_method_description', '!=', 'Retención de IVA en compras')
                     ]}"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -48,7 +48,7 @@
       <field name="name">inherit.payment.wittholding.list</field>
       <field name="model">account.payment</field>
       <field name="arch" type="xml">
-          <tree create="false" edit="false" sample="1" decoration-info="state == 'draft'" decoration-muted="state == 'cancel'">
+          <list create="false" edit="false" sample="1" decoration-info="state == 'draft'" decoration-muted="state == 'cancel'">
             <field name="company_currency_id" invisible="1"/>
             <field name="date"/>
             <field name="withholding_number"/>
@@ -61,7 +61,7 @@
             <field name="amount_signed" string="Amount in Currency" groups="base.group_multi_currency" optional="hide"/>
             <field name="currency_id" string="Payment Currency" groups="base.group_multi_currency" optional="hide"/>
             <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'posted'"/>
-        </tree>
+        </list>
       </field>
     </record>
     <record id="action_view_account_payment_tree_withholding_iva" model="ir.actions.act_window">
@@ -97,4 +97,3 @@
     />
 
 </odoo>
-

@@ -1,35 +1,43 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <record id='account_vat_ledger_tree' model='ir.ui.view'>
-        <field name='name'>Account VAT Ledger</field>
+    <record id="account_vat_ledger_tree" model="ir.ui.view">
+        <field name="name">Account VAT Ledger</field>
         <field name="model">account.vat.ledger</field>
-        <field name='arch' type='xml'>
-            <list  string="VAT Ledger">
+        <field name="arch" type="xml">
+            <list string="VAT Ledger">
                 <field name="name"/>
-                <field name="company_id" />
+                <field name="company_id"/>
                 <field name="state"/>
             </list>
         </field>
     </record>
 
-    <record id='account_vat_ledger_form' model='ir.ui.view'>
-        <field name='name'>Account VAT Ledger</field>
+    <record id="account_vat_ledger_form" model="ir.ui.view">
+        <field name="name">Account VAT Ledger</field>
         <field name="model">account.vat.ledger</field>
-        <field name='arch' type='xml'>
+        <field name="arch" type="xml">
             <form string="VAT Ledger">
                 <field name="type" invisible="1"/>
                 <header>
                     <!-- <button name="action_print" string="Print" states="draft" type="object" class="oe_highlight"/> -->
-                    <button name="action_print" string="Print" states="cancel,presented" type="object"/>
-                    <button name="action_present" string="Present" states="draft" type="object" class="oe_highlight"/>
-                    <button name="action_cancel" string="Cancel" states="draft,presented" type="object"/>
-                    <button name="action_to_draft" string="To Draft" states="cancel" type="object"/>
+                    <!--TODO: Result from converting "states='cancel,presented'" attribute into an 'invisible' attribute
+                         Manually combine states condition into any 'invisible' overrides in inheriting views as well-->
+                    <button name="action_print" string="Print" invisible="state not in ['cancel', 'presented']" type="object"/>
+                    <!--TODO: Result from converting "states='draft'" attribute into an 'invisible' attribute
+                         Manually combine states condition into any 'invisible' overrides in inheriting views as well-->
+                    <button name="action_present" string="Present" invisible="state not in ['draft']" type="object" class="oe_highlight"/>
+                    <!--TODO: Result from converting "states='draft,presented'" attribute into an 'invisible' attribute
+                         Manually combine states condition into any 'invisible' overrides in inheriting views as well-->
+                    <button name="action_cancel" string="Cancel" invisible="state not in ['draft', 'presented']" type="object"/>
+                    <!--TODO: Result from converting "states='cancel'" attribute into an 'invisible' attribute
+                         Manually combine states condition into any 'invisible' overrides in inheriting views as well-->
+                    <button name="action_to_draft" string="To Draft" invisible="state not in ['cancel']" type="object"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,presented"/>
                 </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="company_id" widget="selection" />
+                            <field name="company_id" widget="selection"/>
                             <field name="date_from"/>
                             <field name="date_to"/>
                         </group>
@@ -83,20 +91,9 @@
         <field name="domain">[('type','=','sale'),('company_id', 'in', context.get('allowed_company_ids'))]</field>
     </record>
 
-    <menuitem
-        id="menu_seniat_reports"
-        parent="account.menu_finance_reports"
-        name="SENIAT"
-        groups="account.group_account_manager,account.group_account_user"
-    />
+    <menuitem id="menu_seniat_reports" parent="account.menu_finance_reports" name="SENIAT" groups="account.group_account_manager,account.group_account_user"/>
 
-    <menuitem id="menu_account_purchase_vat_ledger"
-        action="action_account_purchase_vat_ledger"
-        parent="menu_seniat_reports"
-        sequence="6"/>
+    <menuitem id="menu_account_purchase_vat_ledger" action="action_account_purchase_vat_ledger" parent="menu_seniat_reports" sequence="6"/>
 
-    <menuitem id="menu_account_sale_vat_ledger"
-        action="action_account_sale_vat_ledger"
-        parent="menu_seniat_reports"
-        sequence="4"/>
+    <menuitem id="menu_account_sale_vat_ledger" action="action_account_sale_vat_ledger" parent="menu_seniat_reports" sequence="4"/>
 </odoo>

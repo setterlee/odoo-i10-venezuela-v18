@@ -17,7 +17,7 @@
       <record id="view_res_partner_bank_tree_inherit" model="ir.ui.view">
         <field name="name">res_partner_tree_inherit</field>
         <field name="model">res.partner.bank</field>
-        <field name="type">tree</field>
+        <field name="type">list</field>
         <field name="arch" type="xml">
           <list string="Cuentas bancarias">
             <field name="bank_id" />
